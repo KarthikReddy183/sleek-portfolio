@@ -133,6 +133,106 @@
   }
 }
 
+/* Ramx home page */
+.ramx-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: min(100% - 32px, 896px);
+  height: 64px;
+  margin: 0 auto;
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+.ramx-brand { display: flex; width: 32px; height: 32px; flex: 0 0 auto; overflow: hidden; }
+.ramx-brand img { object-fit: cover; image-rendering: pixelated; }
+.ramx-header nav, .ramx-header-tools { display: flex; align-items: center; }
+.ramx-header nav { gap: 28px; }
+.ramx-header nav a, .ramx-header-tools a { color: #85858a; font-size: 14px; transition: color .18s ease; }
+.ramx-header nav a:hover, .ramx-header-tools a:hover { color: var(--foreground); }
+.ramx-header-tools { gap: 14px; margin-left: auto; }
+.ramx-header-tools > a { display: grid; place-items: center; }
+.ramx-header-tools button { width: 24px; height: 24px; padding: 0; color: #85858a; }
+.ramx-main { width: 100%; max-width: 896px; margin: 0 auto; padding-top: 42px; }
+.ramx-intro { margin-bottom: 48px; }
+.ramx-identity { display: flex; align-items: center; gap: 22px; }
+.ramx-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; image-rendering: pixelated; }
+.ramx-identity h1 { margin: 0 0 5px; font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.ramx-role { margin: 0; color: #8c8c91; font-size: 14px; }
+.ramx-role span { padding: 0 3px; }
+.ramx-role a:hover { color: var(--foreground); }
+.ramx-bio { margin: 35px 0 20px; color: #85858a; font-size: 14px; }
+.ramx-socials { display: flex; align-items: center; gap: 13px; }
+.ramx-socials a { display: inline-flex; min-width: 17px; align-items: center; justify-content: center; color: #8f9094; transition: color .18s, transform .18s; }
+.ramx-socials a:hover { color: var(--foreground); transform: translateY(-1px); }
+.ramx-social-mark { font-size: 16px; font-weight: 700; line-height: 1; }
+.ramx-section { margin-top: 42px; }
+.ramx-section h2 { margin: 0 0 15px; font-size: 18px; font-weight: 700; letter-spacing: -.02em; }
+.ramx-job { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 0 0 16px; }
+.ramx-job h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 3px; font-size: 16px; font-weight: 650; }
+.ramx-job p { margin: 0; color: #88898e; font-size: 13px; line-height: 1.55; }
+.ramx-job .ramx-dates { flex: 0 0 auto; text-align: right; }
+.ramx-status { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; background: #e7f6eb; color: #66756b; font-size: 11px; font-weight: 500; }
+.ramx-status i { width: 7px; height: 7px; border-radius: 50%; background: #70ce8b; }
+.ramx-more { display: flex; width: fit-content; min-height: 30px; align-items: center; justify-content: center; margin: 6px auto 0; padding: 0 13px; border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent); border-radius: 7px; color: #85858a; font-size: 12px; box-shadow: 0 2px 7px rgba(0,0,0,.035); transition: color .18s, border-color .18s; }
+.ramx-more:hover { color: var(--foreground); border-color: color-mix(in srgb, var(--foreground) 20%, transparent); }
+.ramx-blog-list { display: flex; flex-direction: column; }
+.ramx-blog { display: flex; justify-content: space-between; gap: 24px; padding: 10px 0; color: inherit; }
+.ramx-blog strong, .ramx-blog small { display: block; }
+.ramx-blog strong { font-size: 14px; font-weight: 600; }
+.ramx-blog small { margin-top: 3px; color: #88898e; font-size: 12px; }
+.ramx-blog-date { flex: 0 0 auto; color: #88898e; font-size: 12px; text-align: right; }
+.ramx-blog-date small { display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
+.ramx-blog:hover strong, .ramx-collection-list a:hover strong { color: #7771cf; }
+.ramx-collection { margin-top: 36px; }
+.ramx-collection h2 { font-size: 16px; }
+.ramx-collection-list { display: flex; flex-direction: column; }
+.ramx-collection-list a { position: relative; display: flex; align-items: baseline; gap: 12px; padding: 7px 20px 7px 0; color: inherit; }
+.ramx-collection-list strong { flex: 0 0 88px; font-size: 13px; font-weight: 600; }
+.ramx-collection-list span { color: #88898e; font-size: 12px; }
+.ramx-collection-list svg { position: absolute; top: 10px; right: 0; color: #a0a0a4; opacity: 0; transition: opacity .18s; }
+.ramx-collection-list a:hover svg { opacity: 1; }
+.ramx-footer { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; width: min(100% - 32px, 896px); margin: 54px auto 0; padding: 30px 0 24px; border-top: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent); }
+.ramx-footer-column h2 { margin: 0 0 12px; color: #8b8b90; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.ramx-footer-column > div { display: flex; flex-wrap: wrap; gap: 9px 15px; }
+.ramx-footer-column a { color: #85858a; font-size: 12px; }
+.ramx-footer-column a:hover { color: var(--foreground); }
+.ramx-copyright { grid-column: 1 / -1; margin: 4px 0 0; color: #929297; font-size: 11px; }
+.dark .ramx-status { background: #173020; color: #a5c6ae; }
+
+@media (max-width: 640px) {
+  .ramx-header { height: 56px; gap: 18px; }
+  .ramx-header nav { gap: 20px; }
+  .ramx-header nav a { font-size: 13px; }
+  .ramx-main { padding-top: 40px; }
+  .ramx-identity { gap: 18px; }
+  .ramx-avatar { width: 54px; height: 54px; }
+  .ramx-identity h1 { font-size: 16px; }
+  .ramx-bio { margin-top: 34px; }
+  .ramx-section { margin-top: 34px; }
+  .ramx-job { gap: 12px; padding-bottom: 14px; }
+  .ramx-job h3 { font-size: 15px; }
+  .ramx-job p { font-size: 12px; }
+  .ramx-blog { gap: 12px; }
+  .ramx-blog strong { font-size: 13px; }
+  .ramx-blog small { font-size: 11px; }
+  .ramx-blog-date { font-size: 11px; }
+  .ramx-collection-list a { gap: 7px; }
+  .ramx-collection-list strong { flex-basis: 70px; font-size: 12px; }
+  .ramx-collection-list span { font-size: 11px; }
+}
+@media (max-width: 390px) {
+  .ramx-header { width: calc(100% - 24px); gap: 12px; }
+  .ramx-header nav { gap: 13px; }
+  .ramx-header nav a { font-size: 12px; }
+  .ramx-header-tools { gap: 7px; }
+  .ramx-job .ramx-dates { font-size: 11px; }
+  .ramx-collection-list span { max-width: 205px; }
+}
+
 .text-secondary {
   @apply text-[#909092] dark:text-[#909092];
 }

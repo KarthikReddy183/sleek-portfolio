@@ -53,7 +53,7 @@ export const skillComponents = {
 
 export const heroConfig = {
   // Personal Information
-  name: 'Ram',
+  name: 'Karthik Reddy Y',
   title: 'A Full Stack web developer.',
   avatar: '/assets/logo.png',
 
