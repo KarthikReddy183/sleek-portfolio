@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Github, Instagram, Linkedin, Mail, Youtube } from 'lucide-react';
 import type { Metadata } from 'next';
+import { experiences } from '@/config/Experience';
+import { ExperienceList } from '@/components/experience/ExperienceList';
 
 export const metadata: Metadata = {
   title: 'Karthik Reddy Y - Full Stack Web Developer',
@@ -54,18 +56,7 @@ export default function HomePage() {
 
       <section className="ramx-section ramx-experience">
         <h2>Experience</h2>
-        <div className="ramx-job">
-          <div><h3>ASBL <span className="ramx-status"><i />Working</span></h3><p>SDE-L1 (Full Stack)</p></div>
-          <p className="ramx-dates">Jan 26 – Present<br />Hyd, IN</p>
-        </div>
-        <div className="ramx-job">
-          <div><h3>Promote</h3><p>Founding Frontend Engineer</p></div>
-          <p className="ramx-dates">Aug 25 – Dec 25<br />USA</p>
-        </div>
-        <div className="ramx-job">
-          <div><h3>Upsurge Labs</h3><p>Backend Developer Intern</p></div>
-          <p className="ramx-dates">Jun 25 – Jul 25<br />Bangalore, IN</p>
-        </div>
+        <ExperienceList experiences={experiences.slice(0, 3)} />
         <Link className="ramx-more" href="/work-experience">Show all work experiences</Link>
       </section>
 

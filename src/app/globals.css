@@ -177,6 +177,34 @@
 .ramx-job .ramx-dates { flex: 0 0 auto; text-align: right; }
 .ramx-status { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; background: #e7f6eb; color: #66756b; font-size: 11px; font-weight: 500; }
 .ramx-status i { width: 7px; height: 7px; border-radius: 50%; background: #70ce8b; }
+.ramx-exp { border-radius: 6px; }
+.ramx-work-page-container { max-width: 42rem; }
+.ramx-work-page-container > div > :nth-child(2) { margin-top: 40px; }
+.ramx-exp-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 14px; list-style: none; cursor: pointer; }
+.ramx-exp-summary::-webkit-details-marker { display: none; }
+.ramx-exp-main { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.ramx-exp-company { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 650; }
+.ramx-exp-company .ramx-status { border: 1px solid #b4e8c0; border-radius: 6px; }
+.ramx-exp-position { color: #88898e; font-size: 13px; line-height: 1.5; }
+.ramx-exp-meta { display: flex; flex-direction: column; color: #88898e; font-size: 13px; line-height: 1.55; text-align: right; }
+.ramx-exp-details { display: flex; flex-direction: column; gap: 12px; margin: 0 0 24px; color: #85858a; font-size: 14px; line-height: 1.5; }
+.ramx-exp-divider { width: 100%; margin: 15px 0 1px; border-top: 1px solid color-mix(in srgb, var(--foreground) 11%, transparent); }
+.ramx-exp-details p { margin: 0; }
+.ramx-exp-details h4 { margin: 0 0 9px; color: var(--foreground); font-size: 14px; font-weight: 600; }
+.ramx-tool-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.ramx-tool-icon { display: inline-flex; width: 34px; height: 30px; align-items: center; justify-content: center; gap: 0; overflow: hidden; padding: 0; border: 1px dashed color-mix(in srgb, var(--foreground) 13%, transparent); border-radius: 6px; color: var(--foreground); font-size: 12px; font-weight: 500; white-space: nowrap; cursor: pointer; transition: width .18s ease, gap .18s ease, padding .18s ease, background-color .18s ease; }
+.ramx-tool-mark { display: grid; width: 17px; height: 17px; flex: 0 0 17px; place-items: center; }
+.ramx-tool-name { display: none; }
+.ramx-tool-icon:hover, .ramx-tool-icon:focus { width: max-content; justify-content: flex-start; gap: 6px; padding: 0 8px; background: color-mix(in srgb, var(--foreground) 6%, var(--background)); }
+.ramx-tool-icon-aws:hover, .ramx-tool-icon-aws:focus { background: #232f3e; }
+.ramx-tool-icon:hover .ramx-tool-name, .ramx-tool-icon:focus .ramx-tool-name { display: inline; }
+.ramx-tool-icon:focus-visible { outline: 2px solid #7771cf; outline-offset: 2px; }
+.ramx-tool-icon img { width: 17px; height: 17px; object-fit: contain; }
+.ramx-tool-icon svg { width: 17px; height: 17px; }
+.ramx-tool-icon-aws { border-style: solid; border-color: #232f3e; background: #232f3e; }
+.ramx-exp-details ul { display: flex; flex-direction: column; gap: 4px; margin: -1px 0 0; padding-left: 0; list-style: none; }
+.ramx-exp-details li { padding-left: 0; }
+.ramx-exp-details li::before { content: '▪ '; color: #88898e; }
 .ramx-more { display: flex; width: fit-content; min-height: 30px; align-items: center; justify-content: center; margin: 6px auto 0; padding: 0 13px; border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent); border-radius: 7px; color: #85858a; font-size: 12px; box-shadow: 0 2px 7px rgba(0,0,0,.035); transition: color .18s, border-color .18s; }
 .ramx-more:hover { color: var(--foreground); border-color: color-mix(in srgb, var(--foreground) 20%, transparent); }
 .ramx-blog-list { display: flex; flex-direction: column; }
@@ -216,6 +244,10 @@
   .ramx-job { gap: 12px; padding-bottom: 14px; }
   .ramx-job h3 { font-size: 15px; }
   .ramx-job p { font-size: 12px; }
+  .ramx-exp-summary { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+  .ramx-exp-company { font-size: 15px; }
+  .ramx-exp-position { font-size: 12px; }
+  .ramx-exp-meta { font-size: 11px; }
   .ramx-blog { gap: 12px; }
   .ramx-blog strong { font-size: 13px; }
   .ramx-blog small { font-size: 11px; }

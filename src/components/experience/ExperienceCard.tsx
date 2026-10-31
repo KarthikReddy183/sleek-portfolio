@@ -1,153 +1,68 @@
 import { type Experience } from '@/config/Experience';
-import { cn } from '@/lib/utils';
-import { Link } from 'next-view-transitions';
-import Image from 'next/image';
-import React from 'react';
+import AWS from '@/components/technologies/AWS';
+import Figma from '@/components/technologies/Figma';
 
-import Skill from '../common/Skill';
-import Github from '../svgs/Github';
-import LinkedIn from '../svgs/LinkedIn';
-import Website from '../svgs/Website';
-import X from '../svgs/X';
-import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
-
-interface ExperienceCardProps {
-  experience: Experience;
-}
-
-const parseDescription = (text: string): string => {
-  return text.replace(/\*(.*?)\*/g, '<b>$1</b>');
+const toolIcon: Record<string, string> = {
+  Android: '/skills/android.svg',
+  AOSP: '/skills/android.svg',
+  'Android Automotive OS': '/skills/android.svg',
+  'Android testing': '/skills/android.svg',
+  AAOS: '/skills/android.svg',
+  VHAL: '/skills/android.svg',
+  CTS: '/skills/android.svg',
+  'Android Testing': '/skills/android.svg',
+  Kotlin: '/skills/kotlin.svg',
+  'Android Studio': '/skills/androidstudio.svg',
+  'VS Code': '/skills/vscode.png',
+  Figma: '/skills/figma.svg',
+  'Jetpack Compose': '/skills/jetpackcompose.svg',
+  'Raspberry Pi': '/skills/raspberrypi.svg',
 };
 
-export function ExperienceCard({ experience }: ExperienceCardProps) {
+export function ExperienceCard({ experience }: { experience: Experience }) {
   return (
-    <div className="flex flex-col gap-4">
-      {/* Company Header */}
-      <div className="flex flex-col gap-2 md:flex-row md:justify-between">
-        {/* Left Side */}
-        <div className="flex items-center gap-4">
-          <Image
-            src={experience.image}
-            alt={experience.company}
-            width={100}
-            height={100}
-            className="size-12 rounded-md"
-          />
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <h3
-                className={cn(
-                  'text-lg font-bold',
-                  experience.isBlur ? 'blur-[5px]' : 'blur-none',
-                )}
-              >
-                {experience.company}
-              </h3>
-              {experience.website && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.website}
-                      target="_blank"
-                      className="size-4 text-neutral-500"
-                    >
-                      <Website />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Visit Website</TooltipContent>
-                </Tooltip>
-              )}
-              {experience.x && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.x}
-                      target="_blank"
-                      className="size-4 text-neutral-500"
-                    >
-                      <X />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Follow on X</TooltipContent>
-                </Tooltip>
-              )}
-              {experience.linkedin && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.linkedin}
-                      target="_blank"
-                      className="size-4 text-neutral-500"
-                    >
-                      <LinkedIn />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Connect on LinkedIn</TooltipContent>
-                </Tooltip>
-              )}
-              {experience.github && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.github}
-                      target="_blank"
-                      className="size-4 text-neutral-500"
-                    >
-                      <Github />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>View GitHub</TooltipContent>
-                </Tooltip>
-              )}
-              {experience.isCurrent && (
-                <div className="flex items-center gap-1 rounded-md border-green-300 bg-green-500/10 px-2 py-1 text-xs">
-                  <div className="size-2 animate-pulse rounded-full bg-green-500"></div>
-                  Working
-                </div>
-              )}
-            </div>
-            <p>{experience.position}</p>
+    <details className="ramx-exp" open>
+      <summary className="ramx-exp-summary">
+        <span className="ramx-exp-main">
+          <span className="ramx-exp-company">
+            {experience.company}
+            {experience.isCurrent && (
+              <span className="ramx-status"><i />Working</span>
+            )}
+          </span>
+          <span className="ramx-exp-position">
+            {experience.position}
+            {experience.context ? ` · ${experience.context}` : ''}
+          </span>
+        </span>
+        <span className="ramx-exp-meta">
+          <span>{experience.startDate} – {experience.endDate}</span>
+          {experience.location && <span>{experience.location}</span>}
+        </span>
+      </summary>
+      <div className="ramx-exp-details">
+        <div className="ramx-exp-divider" />
+        {experience.client && <p><strong>Client:</strong> {experience.client}</p>}
+        <div>
+          <h4>Technologies &amp; Tools</h4>
+          <div className="ramx-tool-list" aria-label="Technologies and tools">
+            {experience.technologies.map((tool) => (
+              <span className={`ramx-tool-icon ${tool === 'AWS' ? 'ramx-tool-icon-aws' : ''}`} aria-label={tool} role="img" tabIndex={0} key={tool}>
+                <span className="ramx-tool-mark">
+                  {tool === 'Figma' ? <Figma /> : tool === 'AWS' ? <AWS /> : toolIcon[tool] ? <img src={toolIcon[tool]} alt="" /> : <span>{tool.slice(0, 2)}</span>}
+                </span>
+                <span className="ramx-tool-name" aria-hidden="true">{tool}</span>
+              </span>
+            ))}
           </div>
         </div>
-        {/* Right Side */}
-        <div className="text-secondary flex flex-col md:text-right">
-          <p>
-            {experience.startDate} -{' '}
-            {experience.isCurrent ? 'Present' : experience.endDate}
-          </p>
-          <p>{experience.location}</p>
+        <div>
+          <h4>What I&apos;ve done</h4>
+          {experience.description.length > 0 && (
+            <ul>{experience.description.map((item) => <li key={item}>{item}</li>)}</ul>
+          )}
         </div>
       </div>
-
-      {/* Technologies */}
-      <div>
-        <h4 className="text-md mt-4 mb-2 font-semibold">Technologies</h4>
-        <div className="flex flex-wrap gap-2">
-          {experience.technologies.map((technology, techIndex: number) => (
-            <Skill
-              key={techIndex}
-              name={technology.name}
-              href={technology.href}
-            >
-              {technology.icon}
-            </Skill>
-          ))}
-        </div>
-      </div>
-
-      {/* Description */}
-      <div className="text-secondary flex flex-col">
-        {experience.description.map(
-          (description: string, descIndex: number) => (
-            <p
-              key={descIndex}
-              dangerouslySetInnerHTML={{
-                __html: `• ${parseDescription(description)}`,
-              }}
-            />
-          ),
-        )}
-      </div>
-    </div>
+    </details>
   );
 }
